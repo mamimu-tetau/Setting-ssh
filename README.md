@@ -12,7 +12,7 @@ cd ~/.ssh
 ※GitクライアントのにアカウントEmailアドレスを使う（特に-CオプションはなしでもOKやと思う）
 ```
 ssh-keygen -t rsa -b 4096 -f 鍵の名前 -C "your_email@example.com"
-Enter file in which to save the key(/User/you/.ssh/鍵の名前):（そのままEnter）
+Enter file in which to save the key(/User/you/.ssh/鍵の名前):##そのままEnter
 ```
 
 
