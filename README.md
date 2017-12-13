@@ -27,8 +27,34 @@ $ls -l
 ```  
 
 #### Gitクライアント用の公開鍵を登録
-##### ローカルからリモートクライアントのみの接続　→　公開鍵を各リポジトリのデプロイ鍵に登録
-##### サーバー側更新がある場合の接続など　→　公開鍵をアカウントののSSH鍵に登録  
+ローカルからリモートクライアントのみの接続　→　公開鍵を各リポジトリのデプロイ鍵に登録
+サーバー側更新がある場合の接続など　→　公開鍵をアカウントののSSH鍵に登録
+登録方法：公開鍵をエディタなどで開いて中身をコピペ
+
+#### configファイルを設定（ない場合は作る）
+Finderから「フォルダへ移動」Cmd+Shift+G ファイルの場所 ~/.ssh/
+```
+Host bitbucket
+  HostName bitbucket.org
+  User git
+  Port 22
+  IdentityFile ~/.ssh/SSH秘密鍵の名前
+  TCPKeepAlive yes
+  IdentitiesOnly yes
+```
+
+#### 接続テスト
+```
+ssh -T bitbucket（configファイルのHostにつけた名前）
+
+// 成功した場合
+logged in as *****.
+You can use git or hg to connect to Bitbucket. Shell access is disabled.
+
+// 失敗した場合
+Permission denied (publickey).
+``` 
+
 
 #### SSH接続できるのにcloneできないとか。
 
@@ -54,3 +80,15 @@ Host bitbucket.org
 ```
 
 ## windows用Putty
+
+
+## つまづきポイント（やってみたら治るかも）
+```
+~/.ssh/config
+// リポジトリの記述
+url = ssh://git@bitbucket.org/*****/******.git
+```
+```
+Host bitbucket // HostNameと統一するとか
+  HostName bitbucket.org
+```
