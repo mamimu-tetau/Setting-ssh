@@ -41,7 +41,10 @@ $ls -l
 <br /><br />
 
 #### configファイルを設定（ない場合は作る）
-Finderから「フォルダへ移動」Cmd+Shift+G ファイルの場所 ~/.ssh/
+viエディタで編集もしくはFinderから「フォルダへ移動」Cmd+Shift+G ファイルの場所 ~/.ssh/ 
+```
+vi ~/.ssh/config
+```
 ```
 Host bitbucket
   HostName bitbucket.org
