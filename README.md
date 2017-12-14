@@ -110,17 +110,6 @@ plistファイルを作って起動時に```ssh-add -A```を自動実行させ�
 https://github.com/jirsbek/SSH-keys-in-macOS-Sierra-keychain
 
 
-#### Configファイルを設定（ない場合は作る）
-Finderから「フォルダへ移動」Cmd+Shift+G ファイルの場所 ~/.ssh/
-```
-Host bitbucket.org
-  HostName bitbucket.org
-  User git
-  Port 22
-  IdentityFile ~/.ssh/SSH秘密鍵の名前
-  TCPKeepAlive yes
-  IdentitiesOnly yes
-```
 
 ## windows用Putty
 
