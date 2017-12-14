@@ -37,7 +37,9 @@ $ls -l
 ローカルからリモートクライアントのみの接続　→　公開鍵を各リポジトリのデプロイ鍵に登録  
 サーバー側更新がある場合の接続など　→　公開鍵をアカウントののSSH鍵に登録  
 登録方法：公開鍵をエディタなどで開いて中身をコピペ
-<br><br>
+
+<br /><br />
+
 #### configファイルを設定（ない場合は作る）
 Finderから「フォルダへ移動」Cmd+Shift+G ファイルの場所 ~/.ssh/
 ```
@@ -49,7 +51,9 @@ Host bitbucket
   TCPKeepAlive yes
   IdentitiesOnly yes
 ```
-<br><br>
+
+<br /><br />
+
 #### 接続テスト
 ```
 ssh -T bitbucket（configファイルのHostにつけた名前）
@@ -61,7 +65,9 @@ You can use git or hg to connect to Bitbucket. Shell access is disabled.
 // 失敗した場合
 Permission denied (publickey).
 ```
-<br><br>
+
+<br /><br />
+
 #### Permission denied (publickey)
 
 GithubやSourcetreeなどのGitクライアントに接続する場合、configファイルを設定してssh-agentに秘密鍵を登録する必要がある  
@@ -70,7 +76,7 @@ SSH接続できるのにcloneできないとか。
 Permission denied (publickey)
 ```
 こんなエラーで接続できない場合。  
-<br>
+<br />
 #### 認証エージェントに秘密鍵を追加する
 ```
 ssh-add -K ~/.ssh/SSH秘密鍵の名前
@@ -81,10 +87,11 @@ ssh-add -l
 4096 SHA256:DIZbaX35dZN+p8mqQxw2mnALOyYJvKJu4BE474JQQO4  (RSA)
 //こんなのでたらOK
 ```
-<br><br>
+
+<br /><br />
 
 #### 再起動のたびにssh-addした鍵がクリアされる。。。（ドハマリ中）
-<br>
+<br />
 ##### 解決策1
 configファイルに以下を追加。毎回追加するのが面倒なのでワイルドカードで。
 ```
@@ -93,7 +100,7 @@ Host *
   UseKeychain yes
 ```
 私はこれでも保存しやがらなかったです。 　
-<br><br>
+<br />
 ##### 解決策2
 plistファイルを作って起動時に```ssh-add -A```を自動実行させる
 ```
@@ -115,7 +122,8 @@ plistファイルを作って起動時に```ssh-add -A```を自動実行させ�
 ```
 ~/ライブラリ/LaunchAgents/フォルダにplistファイルを設置して再起動後```ssh-add -l```で鍵が追加されているか確認。  
 https://github.com/jirsbek/SSH-keys-in-macOS-Sierra-keychain
-<br><br>
+
+<br /><br />
 
 
 ## windows用Putty
