@@ -107,7 +107,7 @@ plistファイルを作って起動時に```ssh-add -A```を自動実行させ�
 </plist>
 ```
 ~/ライブラリ/LaunchAgents/フォルダにplistファイルを設置して再起動後```ssh-add -l```で鍵が追加されているか確認。  
-
+https://github.com/jirsbek/SSH-keys-in-macOS-Sierra-keychain
 
 
 #### Configファイルを設定（ない場合は作る）
@@ -134,4 +134,9 @@ url = ssh://git@bitbucket.org/*****/******.git
 ```
 Host bitbucket // HostNameと統一するとか
   HostName bitbucket.org
+```
+```
+ssh-add ~/.ssh/鍵
+//フルパスで書いてみる
+ssh-add User/*****/.ssh/鍵
 ```
