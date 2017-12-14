@@ -88,7 +88,25 @@ Host *
 私はこれでも保存しやがらなかったです。 　
 
 ##### 解決策2
-
+plistファイルを作って起動時に```ssh-add -A```を自動実行させる
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Label</key>
+	<string>ssh-add-a</string>
+	<key>ProgramArguments</key>
+	<array>
+		<string>ssh-add</string>
+		<string>-A</string>
+	</array>
+	<key>RunAtLoad</key>
+	<true/>
+</dict>
+</plist>
+```
+~/ライブラリ/LaunchAgents/フォルダにplistファイルを設置して再起動後```ssh-add -l```で鍵が追加されているか確認。  
 
 
 
