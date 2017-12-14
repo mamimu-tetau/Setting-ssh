@@ -21,18 +21,18 @@ Enter file in which to save the key(/User/you/.ssh/鍵の名前):(場所、名�
 Enter passphrase (empty for no passphrase):(パスフレーズ）
 Enter same passphrase again:(もっかいパスフレーズ）
 ```
-<br />
 秘密鍵の鍵のパーミッションを変更（重要）
 ```
 $chmod 600 鍵の名前
 ```
-<br>
 秘密鍵のパーミッションを確認
 ```
 $ls -l
 -rw-------  1 hacca  staff   1743 12 13 22:28 鍵の名前
 ```  
-<br><br><br>
+
+<br /><br />
+
 #### Gitクライアント用の公開鍵を登録
 ローカルからリモートクライアントのみの接続　→　公開鍵を各リポジトリのデプロイ鍵に登録  
 サーバー側更新がある場合の接続など　→　公開鍵をアカウントののSSH鍵に登録  
