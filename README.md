@@ -5,7 +5,7 @@
 - [SFTPアプリの設定](#SFTPアプリの設定)
 - [Gitクライアントとの接続](#Gitクライアントとの接続)
 - [Gitクライアントとのサーバの接続](#Gitクライアントとのサーバの接続)
-- [Permission denied (publickey)](#Permission denied (publickey))
+- [Permission denied (publickey)](#Permission-denied-(publickey))
 - [再起動のたびにssh-addした鍵がクリアされる](#再起動のたびにssh-addした鍵がクリアされる)
 <br /><br />
 
