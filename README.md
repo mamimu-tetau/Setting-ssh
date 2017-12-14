@@ -1,12 +1,12 @@
 ## TOC
 - [サーバとssh鍵交換するイメージ](#サーバとssh鍵交換するイメージ)
 - [鍵の作り方](#鍵の作り方)
-- [Gitクライアントとの接続](#サーバに転送)
-	- [Gitクライアントとの接続](#サーバに転送)
 - [サーバに転送](#サーバに転送)
-- [サーバに転送](#サーバに転送)
-- [サーバに転送](#サーバに転送)
-- [サーバに転送](#サーバに転送)
+- [SFTPアプリの設定](#SFTPアプリの設定)
+- [Gitクライアントとの接続](#Gitクライアントとの接続)
+- [Gitクライアントとのサーバの接続](#Gitクライアントとのサーバの接続)
+- [Permission denied (publickey)](#Permission denied (publickey))
+- [再起動のたびにssh-addした鍵がクリアされる](#再起動のたびにssh-addした鍵がクリアされる)
 <br /><br />
 
 ## サーバとssh鍵交換するイメージ
@@ -82,7 +82,11 @@ Permission denied (publickey).
 
 <br /><br />
 
-#### Permission denied (publickey)
+## Gitクライアントとのサーバの接続
+
+<br /><br />
+
+## Permission denied (publickey)
 
 GithubやSourcetreeなどのGitクライアントに接続する場合、configファイルを設定してssh-agentに秘密鍵を登録する必要がある  
 SSH接続できるのにcloneできないとか。
@@ -104,7 +108,7 @@ ssh-add -l
 
 <br /><br />
 
-#### 再起動のたびにssh-addした鍵がクリアされる。。。（ドハマリ中）
+## 再起動のたびにssh-addした鍵がクリアされる。。。（ドハマリ中）
 
 ##### 解決策1
 configファイルに以下を追加。毎回追加するのが面倒なのでワイルドカードで。
