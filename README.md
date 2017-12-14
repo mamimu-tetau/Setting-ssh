@@ -53,10 +53,10 @@ You can use git or hg to connect to Bitbucket. Shell access is disabled.
 
 // 失敗した場合
 Permission denied (publickey).
-``` 
+```
 
 
-#### SSH接続できるのにcloneできないとか。
+#### Permission denied (publickey)
 
 GithubやSourcetreeなどのGitクライアントに接続する場合、configファイルを設定してssh-agentに秘密鍵を登録する必要がある  
 SSH接続できるのにcloneできないとか。
@@ -64,6 +64,31 @@ SSH接続できるのにcloneできないとか。
 Permission denied (publickey)
 ```
 こんなエラーで接続できない場合。  
+
+#### 認証エージェントに秘密鍵を追加する
+```
+ssh-add -K ~/.ssh/SSH秘密鍵の名前
+```
+追加できたか確認
+```
+ssh-add -l
+4096 SHA256:DIZbaX35dZN+p8mqQxw2mnALOyYJvKJu4BE474JQQO4  (RSA)
+//こんなのでたらOK
+```
+
+#### 再起動のたびにssh-addした鍵がクリアされる。。。（ドハマリ中）
+
+##### 解決策1
+configファイルに以下を追加。毎回追加するのが面倒なのでワイルドカードで。
+```
+Host *
+  AddKeysToAgent yes
+  UseKeychain yes
+```
+私はこれでも保存しやがらなかったです。 　
+
+##### 解決策2
+
 
 
 
