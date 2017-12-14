@@ -2,46 +2,25 @@ Host *
   AddKeysToAgent yes
   UseKeychain yes
 
+# bitbucket
 Host bitbucket
   HostName bitbucket.org
   User hacca
-  IdentityFile ~/.ssh/hacca-Bitbucket
+  IdentityFile ~/.ssh/秘密鍵の名前
 
 
 # hacca-1st.xsrv.jp
 Host hacca1
-	HostName hacca-1st.xsrv.jp
-	User hacca-1st
-	IdentityFile ~/.ssh/xserver-hacca1st
-	Port 10022
-
-# bnw.xsrv.jp
-Host bnw
-	HostName bnw.xsrv.jp
-	User bnw
-	IdentityFile ~/.ssh/xserver-bnw
-	Port 10022
-
-# hacca-2nd.xsrv.jp
-Host hacca2
-	HostName hacca-2nd.xsrv.jp
-	User hacca-2nd
-	IdentityFile ~/.ssh/xserver-hacca2nd
+	HostName 鯖
+	User ユーザ名
+	IdentityFile ~/.ssh/秘密鍵の名前
 	Port 10022
 
 # toyo-rice.jp
 Host toyo
-	HostName 203.137.115.12
-	User www-toyo-rice-jp
-	IdentityFile ~/.ssh/toyo-rice
-	Port 22
-
-# sv2314.xserver.jp
-Host tetau
-	HostName sv2314.xserver.jp
-	User tetau
-	IdentityFile ~/.ssh/xserver-tetau
-	Port 10022
-
+	HostName 鯖
+	User ユーザ名
+	IdentityFile ~/.ssh/秘密鍵の名前
+	Port 指定あれば
 
 
