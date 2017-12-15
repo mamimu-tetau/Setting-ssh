@@ -19,6 +19,8 @@
 ```
 cd ~/.ssh
 ```  
+鍵生成（そろそろ4096強度で）  
+置き場所+ローカルのPC名とかで決めてるけど命名規則やけどだれかいい案ください。（Xserver_haccaiMacみたいな感じ？）
 ```
 ssh-keygen -t rsa -b 4096 -f 鍵の名前
 Enter file in which to save the key(/User/you/.ssh/鍵の名前):(場所、名前問題なければそのままEnter）
