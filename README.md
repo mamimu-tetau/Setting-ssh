@@ -10,7 +10,33 @@
 <br /><br />
 
 ## サーバとssh鍵交換するイメージ
+
+
+
+
 ## 鍵の作り方
+鍵を保存したいディレクトリに移動
+```
+cd ~/.ssh
+```  
+```
+ssh-keygen -t rsa -b 4096 -f 鍵の名前
+Enter file in which to save the key(/User/you/.ssh/鍵の名前):(場所、名前問題なければそのままEnter）
+Enter passphrase (empty for no passphrase):(パスフレーズ）
+Enter same passphrase again:(もっかいパスフレーズ）
+```
+秘密鍵の鍵のパーミッションを変更（重要）
+```
+$chmod 600 鍵の名前
+```
+秘密鍵のパーミッションを確認
+```
+$ls -l
+-rw-------  1 hacca  staff   1743 12 13 22:28 鍵の名前
+```  
+
+<br /><br />
+
 ## サーバに転送
 ## SFTPアプリの設定
 <br /><br />
