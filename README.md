@@ -200,3 +200,14 @@ ssh-add ~/.ssh/鍵
 //フルパスで書いてみる
 ssh-add User/*****/.ssh/鍵
 ```
+
+##### こんなエラーがでたら
+```
+Received disconnect from 183.90.238.15 port 10022:2: Too many authentication failures
+Disconnected from 183.90.238.15 port 10022
+```
+```
+Configに
+```
+IdentitiesOnly yes
+```
