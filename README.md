@@ -14,7 +14,7 @@
 
 ## サーバとssh鍵交換するイメージ
 
-![ssh](mamimu-tetau/ssh/blob/master/ssh_infographic.png)
+![ssh](https://github.com/mamimu-tetau/ssh/blob/master/ssh_infographic.png)
 
 
 ## 鍵の作り方
