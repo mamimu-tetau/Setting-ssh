@@ -14,7 +14,7 @@
 
 ## サーバとssh鍵交換するイメージ
 
-
+![ssh](ssh/ssh_infographic.png)
 
 
 ## 鍵の作り方
