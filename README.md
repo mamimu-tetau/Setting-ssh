@@ -46,11 +46,17 @@ $ls -l
 
 #### 公開鍵をサーバーにアップ、もしくは渡す<br>こんな感じのやつ
 ```
-ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDFfRkebVwFT9JBefRkT4DmAEpCsFfkmAdLvY60TYAm7P3vFIM0Z3xLwNIrQnmS99DPHQk6/dO7x3x1h5xCCqEDe6jNNnx82kjIJLllyBBcaPCje3dP5G0Vc+xHz2CjKSjh4VgSFa5ANnzudpsCjVlghyE6+DaSXHaxAAIBgZJxctxPtiX/IpzcZxruhyiwu2OvIsTy/Bg18D7LrTqXCdYlL0rpokcm6tgGrFAooPo7N27ASoV5dzzQg/5TQqWtXUqkKJsnBOMXupCxjUzbSIhSAMySEIFXU+z3QaKF/NPZuYhM5uHtKFKxK6u98hsup6iLc5iwHeagW4VEdFm0gt7wXrNT4HJdtNsXslMwYhYXhpoRzHB22WYzaR7gqrjPkd5cC+tFzeO5noiJHBKt2ztjeAvNb50Ngf9NxCYVnEd+PXTBpma65yKPwUTt9unAIwmnY2JqKDVea9FdRX67LG1iQZcRoEfcT/d8i4ea+aLOaEjo2t6gkJA2MjSPmMFqcJopyfH5HK1yF+NCa3ybU5isOCimr2L+fTsqEJddkPGXr9Zb1N4BitCfiarj5ZD+QHit0Umfco5SK09fboGwJ500r/fbMKtzlrGdGVlsMauCk5u44gD58v+rOzPI7Xj1Po0OZNw== hacca@haccanoiMac.local
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDFf〜〜== hacca@haccanoiMac.local
 ```  
 <br /><br />
 
 
+## サーバに公開鍵を登録
+
+#### .sshディレクトリに移動
+```
+cd ~/.ssh
+```  
 
 
 
