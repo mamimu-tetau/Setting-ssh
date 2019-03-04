@@ -17,7 +17,48 @@
 ![ssh](https://github.com/mamimu-tetau/ssh/blob/master/ssh_infographic.png)
 
 
-## 鍵の作り方
+## ローカル側の鍵の作り方
+
+#### .sshディレクトリに移動
+```
+cd ~/.ssh
+```  
+
+#### 鍵生成（そろそろ4096強度で）  <br>
+毎回作るのではなく基本的にはPC単位とかでいいんじゃないかな（haccaiMac_globalみたいな感じ）
+```
+ssh-keygen -t rsa -b 4096 -f 鍵の名前
+Enter file in which to save the key(/User/you/.ssh/鍵の名前):(場所、名前問題なければそのままEnter）
+Enter passphrase (empty for no passphrase):(パスフレーズ）
+Enter same passphrase again:(もっかいパスフレーズ）
+```
+
+#### 秘密鍵の鍵(.pubじゃないやつ)のパーミッションを変更（重要）
+```
+$chmod 600 鍵の名前
+```
+
+#### 秘密鍵のパーミッションを確認
+```
+$ls -l
+-rw-------  1 hacca  staff   1743 12 13 22:28 鍵の名前
+```  
+
+#### 公開鍵をサーバーにアップ、もしくは渡す<br>こんな感じのやつ
+```
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDFfRkebVwFT9JBefRkT4DmAEpCsFfkmAdLvY60TYAm7P3vFIM0Z3xLwNIrQnmS99DPHQk6/dO7x3x1h5xCCqEDe6jNNnx82kjIJLllyBBcaPCje3dP5G0Vc+xHz2CjKSjh4VgSFa5ANnzudpsCjVlghyE6+DaSXHaxAAIBgZJxctxPtiX/IpzcZxruhyiwu2OvIsTy/Bg18D7LrTqXCdYlL0rpokcm6tgGrFAooPo7N27ASoV5dzzQg/5TQqWtXUqkKJsnBOMXupCxjUzbSIhSAMySEIFXU+z3QaKF/NPZuYhM5uHtKFKxK6u98hsup6iLc5iwHeagW4VEdFm0gt7wXrNT4HJdtNsXslMwYhYXhpoRzHB22WYzaR7gqrjPkd5cC+tFzeO5noiJHBKt2ztjeAvNb50Ngf9NxCYVnEd+PXTBpma65yKPwUTt9unAIwmnY2JqKDVea9FdRX67LG1iQZcRoEfcT/d8i4ea+aLOaEjo2t6gkJA2MjSPmMFqcJopyfH5HK1yF+NCa3ybU5isOCimr2L+fTsqEJddkPGXr9Zb1N4BitCfiarj5ZD+QHit0Umfco5SK09fboGwJ500r/fbMKtzlrGdGVlsMauCk5u44gD58v+rOzPI7Xj1Po0OZNw== hacca@haccanoiMac.local
+```  
+<br /><br />
+
+
+
+
+
+## サーバに転送
+## SFTPアプリの設定
+<br /><br />
+
+
 
 鍵を保存したいディレクトリに移動
 ```
@@ -48,11 +89,6 @@ $ls -l
 ```  
 
 <br /><br />
-
-## サーバに転送
-## SFTPアプリの設定
-<br /><br />
-
 
 ## Gitクライアントとの接続
 
