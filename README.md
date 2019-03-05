@@ -83,7 +83,7 @@ Number of key(s) added:        1
 と出るとOK登録されているはず
 ```
 <br />
-公開鍵で接続できるか確認する
+##### 公開鍵で接続できるか確認する
 ```
 ssh sakura_hacca
 ```
