@@ -87,16 +87,18 @@ Number of key(s) added:        1
 ```
 ssh sakura_hacca
 ```
-###### Too many authentication failuresエラーがでる
+##### Too many authentication failuresエラーがでる
 ```
 Received disconnect from 133.242.249.16 port 22:2: Too many authentication failures
 ```
+
 ```
 ssh-copy-id -i ~/.ssh/hacca_imac__global(ローカル側の公開鍵の場所) sakura_hacca（configに登録したホスト名） -o PreferredAuthentications=password
 パスワード接続で接続してみる
 ```
+
 <br /><br />
-###### 手動で登録する
+##### 手動で登録する
 ```
 ssh -p 22(ポート) hacca(ユーザ名)@hacca.sakura.ne.jp(サーバ名)
 mkdir ~/.ssh (.sshディレクトリなければ作成)
