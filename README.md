@@ -82,6 +82,7 @@ Are you sure you want to continue connecting (yes/no)? yes <------- ここで ye
 Number of key(s) added:        1
 と出るとOK登録されているはず
 ```
+
 <br />
 ##### 公開鍵で接続できるか確認する
 ```
