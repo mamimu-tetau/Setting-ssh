@@ -44,19 +44,69 @@ $ls -l
 -rw-------  1 hacca  staff   1743 12 13 22:28 鍵の名前
 ```  
 
-#### 公開鍵をサーバーにアップ、もしくは渡す<br>こんな感じのやつ
-```
-ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDFf〜〜== hacca@haccanoiMac.local
-```  
 <br /><br />
 
 
 ## サーバに公開鍵を登録
 
-#### .sshディレクトリに移動
+#### ローカルPC内(.ssh)にconfigファイルを設定（ない場合は作る）
+viエディタで編集もしくはFinderから「フォルダへ移動」Cmd+Shift+G ファイルの場所 ~/.ssh/ 
+<br>
+
+viエディタは頑張って使ってください。
 ```
-cd ~/.ssh
-```  
+vi ~/.ssh/config
+```
+
+```
+Host sakura_hacca（ホスト名はなんでもいいわかりやすいの 増えるのでかぶらないように）
+HostName hacca.sakura.ne.jp（サーバ名）
+User hacca（ユーザー名）
+Port 22（ポート）
+IdentityFile ~/.ssh/SSH秘密鍵の名前
+TCPKeepAlive yes
+IdentitiesOnly yes
+```
+<br /><br />
+
+#### ssh-copy-id を使用して登録
+```
+ssh-copy-id -i ~/.ssh/hacca_imac__global(ローカル側の公開鍵の場所) sakura_hacca（configに登録したホスト名）
+
+初めて接続する場合は聞かれるかも
+RSA key fingerprint is SHA256:gbGQmUesGOXa/Arm1rcX/NK8G93Qak22nc82uRiC8VY.
+Are you sure you want to continue connecting (yes/no)? yes <------- ここで yes とタイプ
+
+〜
+〜
+Number of key(s) added:        1
+と出るとOK登録されているはず
+```
+<br />
+公開鍵で接続できるか確認する
+```
+ssh sakura_hacca
+```
+###### Too many authentication failuresエラーがでる
+```
+Received disconnect from 133.242.249.16 port 22:2: Too many authentication failures
+```
+```
+ssh-copy-id -i ~/.ssh/hacca_imac__global(ローカル側の公開鍵の場所) sakura_hacca（configに登録したホスト名） -o PreferredAuthentications=password
+パスワード接続で接続してみる
+```
+<br /><br />
+###### 手動で登録する
+```
+ssh -p 22(ポート) hacca(ユーザ名)@hacca.sakura.ne.jp(サーバ名)
+mkdir ~/.ssh (.sshディレクトリなければ作成)
+touch -/.ssh/authorized_keys (authorized_keysなければ作成)
+chmod 700 ~/.ssh (パーミッション設定大事)
+chmod 600 -/.ssh/authorized_keys (パーミッション設定大事)
+vi ~/.ssh/authorized_keys
+```
+
+
 
 
 
