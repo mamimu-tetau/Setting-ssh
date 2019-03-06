@@ -84,6 +84,7 @@ Number of key(s) added:        1
 ```
 
 <br />
+
 ##### 公開鍵で接続できるか確認する
 ```
 ssh sakura_hacca
