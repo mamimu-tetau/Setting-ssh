@@ -26,7 +26,7 @@ cd ~/.ssh
 
 #### 鍵生成（そろそろ4096強度で）  <br>
 毎回作るのではなく基本的にはPC単位とかでいいんじゃないかな（haccaiMac_globalみたいな感じ）
-```scss
+```Plain Text
 ssh-keygen -t rsa -b 4096 -f //鍵の名前
 Enter file in which to save the key(/User/you/.ssh/鍵の名前):(場所、名前問題なければそのままEnter）
 Enter passphrase (empty for no passphrase):(パスフレーズ）
