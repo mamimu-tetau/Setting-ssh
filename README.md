@@ -26,7 +26,7 @@ cd ~/.ssh
 
 #### 鍵生成（そろそろ4096強度で）  <br>
 毎回作るのではなく基本的にはPC単位とかでいいんじゃないかな（haccaiMac_globalみたいな感じ）
-```
+```shell
 ssh-keygen -t rsa -b 4096 -f 鍵の名前
 Enter file in which to save the key(/User/you/.ssh/鍵の名前):(場所、名前問題なければそのままEnter）
 Enter passphrase (empty for no passphrase):(パスフレーズ）
@@ -39,7 +39,7 @@ $chmod 600 鍵の名前
 ```
 
 #### 秘密鍵のパーミッションを確認
-```java
+```shell
 $ls -l
 -rw-------  1 hacca  staff   1743 12 13 22:28 # 鍵の名前 // てすと
 ```  
