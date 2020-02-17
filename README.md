@@ -3,7 +3,7 @@
 
 ## Table of Contents
 - [サーバとssh鍵交換するイメージ](#サーバとssh鍵交換するイメージ)
-- [ローカル側の鍵の作り方](#ローカル側の鍵の作り方)
+- [1.ローカル側（Mac）で鍵を生成する](#1.ローカル側（Mac）で鍵を生成する)
 - [サーバに公開鍵を登録](#サーバに公開鍵を登録)
 - [SFTPアプリの設定](#SFTPアプリの設定)
 - [Gitクライアントとの接続](#Gitクライアントとの接続)
@@ -20,50 +20,69 @@
 ## 1.ローカル側（Mac）で鍵を生成する
 
 #### .sshディレクトリがない場合はあらかじめ作っておく
-ターミナルでの操作です。
+ターミナルでの操作です。<br><br>
 
+###### .sshディレクトリに移動
 ```
-$cd ~/.ssh
+$ cd ~/.ssh
 ```
-.sshディレクトリに移動<br>
 `/.ssh: No such file or directory`が出るようであれば.sshディレクトリが存在しないので作成します。
 ```
 $ mkdir ~/.ssh
 $ chmod 700 ~/.ssh
+$ cd ~/.ssh
+```
+###### lsコマンドで中身を確認
+名前が被って上書きとかされたらまずいので中身を確認
+```
+$ ls -la
+```
+何もなければ↓みたいなのが出るし、あればファイル名が並ぶ
+```
+total 0
+drwx------   2 hacca  staff   64  2 17 11:17 .
+drwxr-xr-x+ 27 hacca  staff  864  2 17 11:17 ..
 ```
 
-
-#### .sshディレクトリがない場合はあらかじめ作っておく
+###### 鍵生成（4096強度）
+毎回作るのではなく基本的にはPC単位とかでいいんじゃないかな（鍵に名前はhaccaiMac_globalみたいにしとけば） <br />
+パスフレーズはこの鍵を使うときに必要なので忘れないものに。パスワードみたいなもの。
 ```
-$cd ~/.ssh
-$ mkdir ~/.ssh　　　  //ディレクトリ作成
-$ chmod 700 ~/.ssh　 //アクセス制御モード変更
+ssh-keygen -t rsa -b 4096 -f (ここに鍵の名前カッコはいらん)
+Generating public/private rsa key pair.
+Enter passphrase (empty for no passphrase): パスフレーズ入力
+Enter same passphrase again: パスフレーズ入力
+Your identification has been saved in ksss.
+Your public key has been saved in ksss.pub.
+The key fingerprint is:
+SHA256:kD6KpH40dL/lS8YgeSICbMjUeHI1SuQtMhov+d6knE0
+The key's randomart image is:
++---[RSA 4096]----+
+| .+o.o           |
+|=oo+o ..         |
+|+*++ .o          |
+|++o..o..         |
+|+.+..++oS        |
+| =.+..+oo.       |
+|. + E   ++       |
+|.o O   .o.       |
+| .* o    ..      |
++----[SHA256]-----+
 ```
-#### .sshディレクトリに移動
+鍵が生成されたか確認
 ```
-cd ~/.ssh
-```  
-
-#### 鍵生成（そろそろ4096強度で）  <br>
-毎回作るのではなく基本的にはPC単位とかでいいんじゃないかな（haccaiMac_globalみたいな感じ）
-```Plain Text
-ssh-keygen -t rsa -b 4096 -f //鍵の名前
-Enter file in which to save the key(/User/you/.ssh/鍵の名前):(場所、名前問題なければそのままEnter）
-Enter passphrase (empty for no passphrase):(パスフレーズ）
-Enter same passphrase again:(もっかいパスフレーズ）
+$ ls -la
+-rw-------   1 hacca  staff  3434  2 17 11:44 hogehoge
+-rw-r--r--   1 hacca  staff   749  2 17 11:44 hogehoge.pub
 ```
-
-#### 秘密鍵の鍵(.pubじゃないやつ)のパーミッションを変更（重要）
+こんな感じで出来てるはず<br />
+Finderからも確認できる`Command + Shift +G`で移動先に`~/.ssh`で確認できる
 ```
-$chmod 600 鍵の名前
+-rw-------   1 hacca  staff  3434  2 17 11:44 hogehoge
+-rw-r--r--   1 hacca  staff   749  2 17 11:44 hogehoge.pub
 ```
-
-#### 秘密鍵のパーミッションを確認
-```shell
-$ls -l
--rw-------  1 hacca  staff   1743 12 13 22:28 # 鍵の名前 // てすと
-```  
-
+hogehoge（これが秘密鍵。絶対誰にも渡しちゃダメ！）<br />
+hogehoge.pub（これが公開鍵。サーバとかに置くのはこっち）
 <br /><br />
 
 
