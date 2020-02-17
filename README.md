@@ -4,6 +4,7 @@
 ## Table of Contents
 - [サーバとssh鍵交換するイメージ](#サーバとssh鍵交換するイメージ)
 - [1.ローカル側（Mac）で鍵を生成する](#1.ローカル側（Mac）で鍵を生成する)
+- [2.configファイルの作成・編集](#2.configファイルの作成・編集)
 - [サーバに公開鍵を登録](#サーバに公開鍵を登録)
 - [SFTPアプリの設定](#SFTPアプリの設定)
 - [Gitクライアントとの接続](#Gitクライアントとの接続)
@@ -18,11 +19,9 @@
 
 
 ## 1.ローカル側（Mac）で鍵を生成する
+ターミナルでの操作です。<br>
 
-#### .sshディレクトリがない場合はあらかじめ作っておく
-ターミナルでの操作です。<br><br>
-
-###### .sshディレクトリに移動
+#### .sshディレクトリに移動
 ```
 $ cd ~/.ssh
 ```
@@ -32,7 +31,7 @@ $ mkdir ~/.ssh
 $ chmod 700 ~/.ssh
 $ cd ~/.ssh
 ```
-###### lsコマンドで中身を確認
+#### lsコマンドで中身を確認
 名前が被って上書きとかされたらまずいので中身を確認
 ```
 $ ls -la
@@ -44,18 +43,19 @@ drwx------   2 hacca  staff   64  2 17 11:17 .
 drwxr-xr-x+ 27 hacca  staff  864  2 17 11:17 ..
 ```
 
-###### 鍵生成（4096強度）
+#### 鍵生成（4096強度）
 毎回作るのではなく基本的にはPC単位とかでいいんじゃないかな（鍵に名前はhaccaiMac_globalみたいにしとけば） <br />
 パスフレーズはこの鍵を使うときに必要なので忘れないものに。パスワードみたいなもの。
 ```
-ssh-keygen -t rsa -b 4096 -f (ここに鍵の名前カッコはいらん)
+$ ssh-keygen -t rsa -b 4096 -f (ここに鍵の名前カッコはいらん)
+
 Generating public/private rsa key pair.
 Enter passphrase (empty for no passphrase): パスフレーズ入力
 Enter same passphrase again: パスフレーズ入力
-Your identification has been saved in ksss.
-Your public key has been saved in ksss.pub.
+Your identification has been saved in hogehoge.
+Your public key has been saved in hogehoge.pub.
 The key fingerprint is:
-SHA256:kD6KpH40dL/lS8YgeSICbMjUeHI1SuQtMhov+d6knE0
+SHA256:kD6KpH40dL/lS8YgeSICbMjUeHI1SuQtM
 The key's randomart image is:
 +---[RSA 4096]----+
 | .+o.o           |
@@ -83,8 +83,54 @@ Finderからも確認できる`Command + Shift +G`で移動先に`~/.ssh`で確�
 ```
 hogehoge（これが秘密鍵。絶対誰にも渡しちゃダメ！）<br />
 hogehoge.pub（これが公開鍵。サーバとかに置くのはこっち）
-<br /><br />
+<br /><br /><br /><br />
 
+## 2.configファイルの作成・編集
+毎回接続コマンド面倒なので.sshディレクトリ直下にconfigファイルを作成して、その中に接続先のホスト名やユーザー名、秘密鍵ファイルのパス等を全て記載しておきます。<br />
+
+#### .sshディレクトリに移動
+```
+$ cd ~/.ssh
+```
+#### lsコマンドで中身を確認
+configファイルがあれば`config`と表示され、なければ何も起こりません。
+```
+$ ls
+```
+configファイルがなければtouchコマンドで作成。viコマンド使えるなら作成から記述まで一気にやっちゃってください。
+```
+$ touch config
+```
+#### configファイルのパーミッションを設定
+configファイルは誰かに編集されたら困るので、パーミッションを変えます。
+```
+$ chmod 600 ~/.ssh/config
+```
+#### configファイルの設定
+Finderから`Command + Shift +G`で移動先に`~/.ssh`
+configファイルをエディターで開きます。Mac純正テキストエディターとかメモ帳は使わない！BracketとかSublimeとかCotEditorとかで。
+ホスト、ユーザー名、ポートとかはサーバの情報です。
+```
+Host hacca2（ホスト名）
+	HostName hacca-2nd.xsrv.jp（サーバ名）
+	User hacca-2nd（ユーザー名）
+	IdentityFile ~/.ssh/hogegoge（秘密鍵の名前）
+	IdentitiesOnly yes
+	Port 10022
+	AddKeysToAgent yes
+	UseKeychain yes
+```
+
+|設定名|値|
+|---|---|
+|Host |ホスト名はなんでもいいわかりやすいの 増えるのでかぶらないように|
+|HostName |サーバのホスト名やIPアドレス|
+|User |サーバのログインユーザ名|
+|IdentityFile |秘密鍵の絶対パス|
+|Port |サーバのポートSSH、SFTP用|
+|IdentitiesOnly |IdentityFileで指定した秘密鍵に限定するかどうか（yes/no）|
+|UseKeychain |キーチェーンに追加（yes/no）|
+|AddKeysToAgent |ssh agentに登録（yes/no）|
 
 ## サーバに公開鍵を登録
 
