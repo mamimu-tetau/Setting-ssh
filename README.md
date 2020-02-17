@@ -17,14 +17,28 @@
 ![ssh](https://github.com/mamimu-tetau/ssh/blob/master/ssh_infographic.png)
 
 
-## ローカル側の鍵の作り方
+## 1.ローカル側（Mac）で鍵を生成する
+
+#### .sshディレクトリがない場合はあらかじめ作っておく
+ターミナルでの操作です。
+
+```
+$cd ~/.ssh
+```
+.sshディレクトリに移動<br>
+`/.ssh: No such file or directory`が出るようであれば.sshディレクトリが存在しないので作成します。
+```
+$ mkdir ~/.ssh
+$ chmod 700 ~/.ssh
+```
+
 
 #### .sshディレクトリがない場合はあらかじめ作っておく
 ```
+$cd ~/.ssh
 $ mkdir ~/.ssh　　　  //ディレクトリ作成
 $ chmod 700 ~/.ssh　 //アクセス制御モード変更
 ```
-
 #### .sshディレクトリに移動
 ```
 cd ~/.ssh
