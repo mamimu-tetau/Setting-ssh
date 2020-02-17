@@ -107,9 +107,12 @@ configファイルは誰かに編集されたら困るので、パーミッシ�
 $ chmod 600 ~/.ssh/config
 ```
 #### configファイルの設定
-Finderから`Command + Shift +G`で移動先に`~/.ssh`
-configファイルをエディターで開きます。Mac純正テキストエディターとかメモ帳は使わない！BracketとかSublimeとかCotEditorとかで。
-ホスト、ユーザー名、ポートとかはサーバの情報です。
+Finderから`Command + Shift +G`で移動先に`~/.ssh`<br />
+configファイルをエディターで開きます。<br />
+Mac純正テキストエディターとかメモ帳は使わない！BracketとかSublimeとかCotEditorとかで。<br />
+ホスト、ユーザー名、ポートとかはサーバの情報です。<br />
+[configのサンプル](https://github.com/mamimu-tetau/ssh/blob/master/config)
+
 ```
 Host hacca2（ホスト名）
 	HostName hacca-2nd.xsrv.jp（サーバ名）
@@ -142,6 +145,15 @@ viエディタは頑張って使ってください。
 ```
 vi ~/.ssh/config
 ```
+
+haccanoiMac:.ssh hacca$ ssh tetau
+The authenticity of host '[sv2314.xserver.jp]:10022 ([183.90.238.15]:10022)' can't be established.
+ECDSA key fingerprint is SHA256:NR1Ob460g6mOgu1tfkbFtLqSbsnBixucP4qTM/RMnII.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added '[sv2314.xserver.jp]:10022,[183.90.238.15]:10022' (ECDSA) to the list of known hosts.
+Enter passphrase for key '/Users/hacca/.ssh/hacca_imac__global': 
+Last login: Sat Feb 15 18:13:49 2020 from softbank060154125183.bbtec.net
+[tetau@sv2314 ~]$ 
 
 ```
 Host sakura_hacca（ホスト名はなんでもいいわかりやすいの 増えるのでかぶらないように）
