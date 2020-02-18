@@ -4,8 +4,8 @@
 ## Table of Contents
 - [サーバとssh鍵交換するイメージ](#サーバとssh鍵交換するイメージ)
 - [ssh鍵生成からサーバ設置](#ssh鍵生成からサーバ設置)
- - [ローカル側（Mac）で鍵を生成する](#ローカル側（Mac）で鍵を生成する)
- - [configファイルの作成・編集](#configファイルの作成・編集)
+  - [ローカル側（Mac）で鍵を生成する](#ローカル側（Mac）で鍵を生成する)
+  - [configファイルの作成・編集](#configファイルの作成・編集)
 - [サーバに公開鍵を登録](#3.サーバに公開鍵を登録)
 - [SFTPアプリの設定](#SFTPアプリの設定)
 - [Gitクライアントとの接続](#Gitクライアントとの接続)
@@ -20,6 +20,7 @@
 
 
 # ssh鍵生成からサーバ設置
+<br /><br />
 
 ## 1.ローカル側（Mac）で鍵を生成する
 ターミナルでの操作です。<br>
@@ -144,115 +145,61 @@ Host hacca2（ホスト名）
 
 
 
-## 3.サーバに公開鍵を登録
+## サーバに公開鍵を登録
+<br /><br />
+どなたかのサーバを使わせてもらう場合や「公開鍵くれや」って言われたときはconfigで登録した該当サーバの秘密鍵とペアの公開鍵（長い英数字の羅列）を渡します。<br />
+初めてサーバに公開鍵を登録する場合はパスワードで一旦接続して公開鍵を登録し、パスワード認証を無効にしたりする方法があります。<br /><br />
 
-#### ローカルPC内(.ssh)にconfigファイルを設定（ない場合は作る）
-viエディタで編集もしくはFinderから「フォルダへ移動」Cmd+Shift+G ファイルの場所 ~/.ssh/ 
-<br>
 
-viエディタは頑張って使ってください。
+#### サーバに手動で登録する
 ```
-vi ~/.ssh/config
+$ ssh -p (ポート) (ユーザ名)@(サーバ名)
+$ cd  ~/.ssh
 ```
-
-haccanoiMac:.ssh hacca$ ssh tetau
-The authenticity of host '[sv2314.xserver.jp]:10022 ([183.90.238.15]:10022)' can't be established.
-ECDSA key fingerprint is SHA256:NR1Ob460g6mOgu1tfkbFtLqSbsnBixucP4qTM/RMnII.
-Are you sure you want to continue connecting (yes/no)? yes
-Warning: Permanently added '[sv2314.xserver.jp]:10022,[183.90.238.15]:10022' (ECDSA) to the list of known hosts.
-Enter passphrase for key '/Users/hacca/.ssh/hacca_imac__global': 
-Last login: Sat Feb 15 18:13:49 2020 from softbank060154125183.bbtec.net
-[tetau@sv2314 ~]$ 
-
+`not found`エラーで.sshディレクトリない場合は以下。
 ```
-Host sakura_hacca（ホスト名はなんでもいいわかりやすいの 増えるのでかぶらないように）
-HostName hacca.sakura.ne.jp（サーバ名）
-User hacca（ユーザー名）
-Port 22（ポート）
-IdentityFile ~/.ssh/SSH秘密鍵の名前
-TCPKeepAlive yes
-IdentitiesOnly yes
+$ mkdir ~/.ssh
+$ chmod 700 ~/.ssh
+```
+viコマンドで公開鍵を登録（1行に鍵一つ）
+```
+vi ~/.ssh/authorized_keys
+```
+最終行に公開鍵を公録して`:wq`で保存
+
+`not found`エラーでauthorized_keysがない場合は以下。
+```
+$ touch ~/.ssh/authorized_keys
+$ chmod 600 -/.ssh/authorized_keys
+$ vi ~/.ssh/authorized_keys
 ```
 <br /><br />
 
-#### サーバにssh-copy-id を使用して登録
+#### すでにsshで接続できるサーバにはssh-copy-idを使用して登録する場合はこちら
 ```
-ssh-copy-id -i ~/.ssh/hacca_imac__global(ローカル側の公開鍵の場所) sakura_hacca（configに登録したホスト名）
-
-初めて接続する場合は聞かれるかも
-RSA key fingerprint is SHA256:gbGQmUesGOXa/Arm1rcX/NK8G93Qak22nc82uRiC8VY.
-Are you sure you want to continue connecting (yes/no)? yes <------- ここで yes とタイプ
-
-〜
-〜
-Number of key(s) added:        1
-と出るとOK登録されているはず
+ssh-copy-id -i ~/.ssh/authorized_keys (ユーザ名)@(サーバ名)
 ```
 
-<br />
+<br /><br />
 
 ##### 公開鍵で接続できるか確認する
 ```
-ssh sakura_hacca
+ssh （configで設定したhost名）
 ```
-##### Too many authentication failuresエラーがでる
-```
-Received disconnect from 133.242.249.16 port 22:2: Too many authentication failures
-```
+`Last login: Tue Feb 18 11:36:08 2020 from softbank060154125183.bbtec.net`とかが出ると接続完了。`exit`などで出る。
 
-```
-ssh-copy-id -i ~/.ssh/hacca_imac__global(ローカル側の公開鍵の場所) sakura_hacca（configに登録したホスト名） -o PreferredAuthentications=password
-パスワード接続で接続してみる
-```
 
-<br /><br />
-##### 手動で登録する
-```
-ssh -p 22(ポート) hacca(ユーザ名)@hacca.sakura.ne.jp(サーバ名)
-mkdir ~/.ssh (.sshディレクトリなければ作成)
-touch -/.ssh/authorized_keys (authorized_keysなければ作成)
-chmod 700 ~/.ssh (パーミッション設定大事)
-chmod 600 -/.ssh/authorized_keys (パーミッション設定大事)
-vi ~/.ssh/authorized_keys
-```
+
+
+<br /><br /><br /><br />
 
 
 
 
 
-## サーバに転送
-## SFTPアプリの設定
-<br /><br />
 
 
 
-鍵を保存したいディレクトリに移動
-```
-cd ~/.ssh
-```  
-
-カレントフォルダに「.ssh」がない場合は、下記コマンドで作成する。
-```
-install -m 0700 -d ~/.ssh
-```  
-
-鍵生成（そろそろ4096強度で）  
-置き場所+ローカルのPC名とかで決めてるけど命名規則やけどだれかいい案ください。（Xserver_haccaiMacみたいな感じ？）
-```
-ssh-keygen -t rsa -b 4096 -f 鍵の名前
-Enter file in which to save the key(/User/you/.ssh/鍵の名前):(場所、名前問題なければそのままEnter）
-Enter passphrase (empty for no passphrase):(パスフレーズ）
-Enter same passphrase again:(もっかいパスフレーズ）
-```
-秘密鍵の鍵(.pubじゃないやつ)のパーミッションを変更（重要）
-```
-$chmod 600 鍵の名前
-```
-秘密鍵のパーミッションを確認
-```
-$ls -l
--rw-------  1 hacca  staff   1743 12 13 22:28 鍵の名前
-```  
 
 <br /><br />
 
@@ -366,15 +313,15 @@ plistファイルを作って起動時に```ssh-add -A```を自動実行させ�
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>Label</key>
-	<string>ssh-add-a</string>
-	<key>ProgramArguments</key>
-	<array>
-		<string>ssh-add</string>
-		<string>-A</string>
-	</array>
-	<key>RunAtLoad</key>
-	<true/>
+    <key>Label</key>
+    <string>ssh-add-a</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>ssh-add</string>
+        <string>-A</string>
+    </array>
+    <key>RunAtLoad</key>
+    <true/>
 </dict>
 </plist>
 ```
