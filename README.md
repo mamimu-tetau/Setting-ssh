@@ -3,9 +3,10 @@
 
 ## Table of Contents
 - [サーバとssh鍵交換するイメージ](#サーバとssh鍵交換するイメージ)
-- [1.ローカル側（Mac）で鍵を生成する](#1.ローカル側（Mac）で鍵を生成する)
-- [2.configファイルの作成・編集](#2.configファイルの作成・編集)
-- [サーバに公開鍵を登録](#サーバに公開鍵を登録)
+- [ssh鍵生成からサーバ設置](#ssh鍵生成からサーバ設置)
+ - [ローカル側（Mac）で鍵を生成する](#ローカル側（Mac）で鍵を生成する)
+ - [configファイルの作成・編集](#configファイルの作成・編集)
+- [サーバに公開鍵を登録](#3.サーバに公開鍵を登録)
 - [SFTPアプリの設定](#SFTPアプリの設定)
 - [Gitクライアントとの接続](#Gitクライアントとの接続)
 - [Gitクライアントとのサーバの接続](#Gitクライアントとのサーバの接続)
@@ -13,10 +14,12 @@
 - [再起動のたびにssh-addした鍵がクリアされる](#再起動のたびにssh-addした鍵がクリアされる)
 <br /><br />
 
-## サーバとssh鍵交換するイメージ
+# サーバとssh鍵交換するイメージ
 
 ![ssh](https://github.com/mamimu-tetau/ssh/blob/master/ssh_infographic.png)
 
+
+# ssh鍵生成からサーバ設置
 
 ## 1.ローカル側（Mac）で鍵を生成する
 ターミナルでの操作です。<br>
@@ -109,19 +112,21 @@ $ chmod 600 ~/.ssh/config
 #### configファイルの設定
 Finderから`Command + Shift +G`で移動先に`~/.ssh`<br />
 configファイルをエディターで開きます。<br />
-Mac純正テキストエディターとかメモ帳は使わない！BracketとかSublimeとかCotEditorとかで。<br />
+Mac純正テキストエディターとかメモ帳は使わない！BracketとかSublimeTextとかCotEditorとかで。<br />
+SublimeTextだとパスワードを入力すれば保存できましたが、その他エディタではできない模様。その際はファイル自体の権限に自分を追加していただく方法があります。自己責任でお願いします。
+[権限追加](https://rensrv.com/macos/grant-of-auth-httpdconf/)
 ホスト、ユーザー名、ポートとかはサーバの情報です。<br />
 [configのサンプル](https://github.com/mamimu-tetau/ssh/blob/master/config)
 
 ```
 Host hacca2（ホスト名）
-	HostName hacca-2nd.xsrv.jp（サーバ名）
-	User hacca-2nd（ユーザー名）
-	IdentityFile ~/.ssh/hogegoge（秘密鍵の名前）
-	IdentitiesOnly yes
-	Port 10022
-	AddKeysToAgent yes
-	UseKeychain yes
+ HostName sabasaba（サーバ名）
+ User fugafuga（ユーザー名）
+ IdentityFile ~/.ssh/hogehoge（秘密鍵の名前）
+ IdentitiesOnly yes
+ Port 10022
+ AddKeysToAgent yes
+ UseKeychain yes
 ```
 
 |設定名|値|
@@ -135,7 +140,11 @@ Host hacca2（ホスト名）
 |UseKeychain |キーチェーンに追加（yes/no）|
 |AddKeysToAgent |ssh agentに登録（yes/no）|
 
-## サーバに公開鍵を登録
+<br /><br /><br /><br />
+
+
+
+## 3.サーバに公開鍵を登録
 
 #### ローカルPC内(.ssh)にconfigファイルを設定（ない場合は作る）
 viエディタで編集もしくはFinderから「フォルダへ移動」Cmd+Shift+G ファイルの場所 ~/.ssh/ 
