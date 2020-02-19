@@ -122,12 +122,12 @@ $ chmod 600 ~/.ssh/config
 #### configファイルの設定
 Finderから`Command + Shift +G`で移動先に`~/.ssh`<br />
 configファイルをエディターで開きます。<br />
-Mac純正テキストエディターとかメモ帳は使わない！BracketとかSublimeTextとかCotEditorとかで。<br />
-SublimeTextだとパスワードを入力すれば保存できましたが、その他エディタではできない模様。その際はファイル自体の権限に自分を追加していただく方法があります。自己責任でお願いします。
-[権限追加](https://rensrv.com/macos/grant-of-auth-httpdconf/)
-ホスト、ユーザー名、ポートとかはサーバの情報です。<br />
-[configのサンプル](https://github.com/mamimu-tetau/ssh/blob/master/config)
+**Mac純正テキストエディターとかメモ帳は使わない！**BracketとかSublimeTextとかCotEditorとかで。<br />
+SublimeTextだとパスワードを入力すれば保存できましたが、その他エディタではできない模様。その際はファイル自体の権限に自分を追加していただく方法があります。自己責任でお願いします。<br />
+[権限追加](https://rensrv.com/macos/grant-of-auth-httpdconf/)<br /><br />
 
+
+**config**
 ```
 Host hacca2（ホスト名）
  HostName sabasaba（サーバ名）
@@ -138,6 +138,8 @@ Host hacca2（ホスト名）
  AddKeysToAgent yes
  UseKeychain yes
 ```
+ホスト、ユーザー名、ポートとかはサーバの情報です。<br />
+[configのサンプル](https://github.com/mamimu-tetau/ssh/blob/master/config)
 
 |設定名|値|
 |---|---|
