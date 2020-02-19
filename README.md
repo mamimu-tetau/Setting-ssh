@@ -19,7 +19,7 @@
 - [Gitクライアントとのサーバの接続](#Gitクライアントとのサーバの接続)
 - [Permission denied (publickey)](#Permission-denied-(publickey))
 - [再起動のたびにssh-addした鍵がクリアされる](#再起動のたびにssh-addした鍵がクリアされる)
-<br><br><br>
+<br><br><br><br>
 
 ### サーバとssh鍵交換するイメージ
 ***
@@ -121,6 +121,7 @@ $ touch config
 $ chmod 600 ~/.ssh/config
 ```
 configファイルは誰かに編集されたら困るので、パーミッションを変えます。
+<br /><br />
 
 #### configファイルの設定
 Finderから`Command + Shift +G`で移動先に`~/.ssh`<br />
@@ -171,17 +172,23 @@ $ ssh -p (ポート) (ユーザ名)@(サーバ名)
 $ cd  ~/.ssh
 ```
 `not found`エラーで.sshディレクトリない場合は以下。
+
+#### .sshディレクトリの作成
 ```
 $ mkdir ~/.ssh
 $ chmod 700 ~/.ssh
 ```
-viコマンドで公開鍵を登録（1行に鍵一つ）
+
+#### 公開鍵を登録
 ```
 vi ~/.ssh/authorized_keys
 ```
+viコマンドで公開鍵を登録（1行に鍵一つ）
 最終行に公開鍵を公録して`:wq`で保存
 
 `not found`エラーでauthorized_keysがない場合は以下。
+
+#### authorized_keysを作成
 ```
 $ touch ~/.ssh/authorized_keys
 $ chmod 600 -/.ssh/authorized_keys
@@ -201,9 +208,6 @@ ssh-copy-id -i ~/.ssh/authorized_keys (ユーザ名)@(サーバ名)
 ssh （configで設定したhost名）
 ```
 `Last login: Tue Feb 18 11:36:08 2020 from softbank060154125183.bbtec.net`とかが出ると接続完了。`exit`などで出る。
-
-
-
 
 <br /><br /><br /><br />
 
