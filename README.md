@@ -1,5 +1,13 @@
-#### そろそろWindows乗り換えるしMacだけの書き方でいいかな？いいよね？
-<br /><br />
+## コーディングを始めるためのパソコンのセットアップ
+***
+1. エディタのインストール(Brackets、SublimeText、Atom、DWなどなど)
+2. [Macのプリインストールapacheの設定(静的サイト作成用)](https://github.com/mamimu-tetau/Setting-mac-apache)
+3. [sshの設定(サーバ接続、Gitリモート接続用)](https://github.com/mamimu-tetau/Setting-ssh)
+4. [nodeのインストール(Gulp用)](https://github.com/mamimu-tetau/Setting-Install-node)
+5. [Gulpのインストール](https://github.com/mamimu-tetau/Setting-gulp)
+6. [Sorcetreeのインストールと設定](https://github.com/mamimu-tetau/Setting-Sorcetree)
+***
+<br><br><br>
 
 ## Table of Contents
 - [サーバとssh鍵交換するイメージ](#サーバとssh鍵交換するイメージ)
@@ -14,12 +22,13 @@
 - [再起動のたびにssh-addした鍵がクリアされる](#再起動のたびにssh-addした鍵がクリアされる)
 <br /><br />
 
-# サーバとssh鍵交換するイメージ
-
+## サーバとssh鍵交換するイメージ
+***
 ![ssh](https://github.com/mamimu-tetau/ssh/blob/master/ssh_infographic.png)
 
 
-# ssh鍵生成からサーバ設置
+## ssh鍵生成からサーバ設置
+***
 <br /><br />
 
 ## 1.ローカル側（Mac）で鍵を生成する
