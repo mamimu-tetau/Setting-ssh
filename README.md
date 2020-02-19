@@ -1,4 +1,4 @@
-## Macの環境セットアップ
+## Macの開発環境セットアップ
 ***
 1. エディタのインストール(Brackets、SublimeText、Atom、DWなどなど)
 2. [Macのプリインストールapacheの設定(静的サイト作成用)](https://github.com/mamimu-tetau/Setting-mac-apache)
